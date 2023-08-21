@@ -1,6 +1,4 @@
-plain_text=input("Enter a string:").upper().replace(' ','')
-
-
+plain_text=input("Enter your name:").upper().replace(' ','')
 
 key=5
 
