@@ -1,0 +1,3 @@
+
+def findK(n):
+    
