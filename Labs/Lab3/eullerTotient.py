@@ -1,22 +1,25 @@
+def primeFactors(n):
+    realn = n
+    count = 0
+    factors = {}
 
-def computeTotient(n):
-	phi=[]
-	for i in range(n + 2):
-		phi.append(0)
+    while(n % 2 == 0):
+        count += 1
+        n //= 2 #Updating n by quotient when divided by zero.
+    if(count != 0):
+        factors[2] = count
+    
+    for i in range(3, int(realn**0.5)+1, 2):
+        count=0
+        while (n % i == 0):
+            count += 1
+            n //= i
+        if(count != 0):
+            factors[i] = count
+    if n > 1:
+        factors[n] = 1
+    return factors
 
-	for i in range(1, n+1):
 
-		phi[i] = i 
-
-	for p in range(2,n+1):
-		if (phi[p] == p):
-			phi[p] = p-1
-			for i in range(2*p,n+1,p):
-				phi[i] = (phi[i]//p) * (p-1)
-	
-	for i in range(1,n+1):
-		print("Totient of ", i ," is ",
-		phi[i])
-
-n = 12
-computeTotient(n)
+num = int(input("Enter a number: "))
+print(primeFactors(num))
