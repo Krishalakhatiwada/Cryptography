@@ -30,14 +30,18 @@ def padding_msg(message):
     return message
 
 def divide_into_blocks(padded_msg):
-    return ([padded_msg[i : i+128] for i in range(len(message), 128)])
+    blocks = []
+    
+    for i in range(0, len(padded_msg), 128):
+        blocks.append(padded_msg[i : i + 128])
+    return blocks
 
 w = [0] * 80
 def wt(message ):
     for t in range (0,16):
         w[t] = int.from_bytes(message[t * 8:(t+1) * 8],"big")
     for i in range(16,80):
-        wt=sigma_1(w[t-2]+w[t-7]) +sigma_0(w[t-15]+w[t]-16) 
+        w[t]=sigma_1(w[t-2]+w[t-7]) +sigma_0(w[t-15]+w[t-16]) 
 
 
 
